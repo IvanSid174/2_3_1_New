@@ -1,13 +1,13 @@
-package DAO;
+package web.config.service;
 
-import Model.User;
+import web.config.Model.User;
 
 import java.util.List;
 
-public interface DaoUser {
+public interface UserService {
     List<User> allUsers();
     void add(User user);
-    void delete(User user);
+    void delete(int id);
     void edit(User user);
     User getById(int id);
 }

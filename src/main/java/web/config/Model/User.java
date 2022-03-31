@@ -1,26 +1,34 @@
-package Model;
+package web.config.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "Имя")
+    @Column(name = "Name")
+    @Pattern(regexp = "[A-Za-zА-яа-я]{2,15}", message = "Name should be between 2 and 15 latin characters")
     private String name;
 
-    @Column(name = "Фамилия")
+    @Column(name = "Surname")
+    @Pattern(regexp = "[A-Za-zА-яа-я]{2,15}", message = "Surname should be between 2 and 15 latin characters")
     private String surname;
 
-    @Column(name = "Отчество")
+    @Column(name = "Patronymic")
+    @Pattern(regexp = "[A-Za-zА-яа-я]{2,15}", message = "Отчество должно содержать от 2 до 15 латинских символов.")
     private String patronymic;
 
-    @Column(name = "Полных лет")
+    @Column(name = "Age")
+    @Min(value = 0, message = "Age should be >= 0")
+    @Max(value = 127, message = "Age should be < 128")
     private int age;
 
     public int getId() {

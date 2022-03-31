@@ -1,7 +1,6 @@
-package DAO;
+package web.config.DAO;
 
-import Model.User;
-import org.springframework.stereotype.Component;
+import web.config.Model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
@@ -9,19 +8,15 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Transactional
 public class DaoUserImpl implements DaoUser{
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    @SuppressWarnings("unckecked")
     public List allUsers() {
-        return entityManager.createQuery("select u from User u", User.class).getResultList();
+        return entityManager.createQuery("select u from User u",User.class).getResultList();
     }
-
-
 
     @Override
     public void add(User user) {
@@ -29,8 +24,8 @@ public class DaoUserImpl implements DaoUser{
     }
 
     @Override
-    public void delete(User user) {
-        entityManager.remove(user);
+    public void delete(int id) {
+        entityManager.remove(getById(id));
     }
 
     @Override

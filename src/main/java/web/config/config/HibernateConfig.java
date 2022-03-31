@@ -1,4 +1,4 @@
-package config;
+package web.config.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages ={"config","DAO","Model","service","Controller"})
+@ComponentScan("web.config")
 @EnableTransactionManagement
 @PropertySource(value = "classpath:/db.properties")
 public class HibernateConfig {
@@ -43,7 +43,7 @@ public class HibernateConfig {
         LocalContainerEntityManagerFactoryBean factoryBean
                 = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
-        factoryBean.setPackagesToScan("java.Model");
+        factoryBean.setPackagesToScan("web.config.Model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);

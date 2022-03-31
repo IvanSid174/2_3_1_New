@@ -1,10 +1,8 @@
-package service;
+package web.config.service;
 
-import DAO.DaoUser;
-import DAO.DaoUserImpl;
-import Model.User;
+import web.config.DAO.DaoUser;
+import web.config.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -30,8 +28,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void delete(User user) {
-        daoUser.delete(user);
+    public void delete(int id) {
+        daoUser.delete(id);
 
     }
 
